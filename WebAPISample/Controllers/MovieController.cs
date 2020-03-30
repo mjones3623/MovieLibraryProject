@@ -49,31 +49,40 @@ namespace WebAPISample.Controllers
         }
 
         // POST api/movie
-        [HttpPost]
+        [HttpPost("{id}")]
         public IActionResult Post([FromBody]Movie value)
         {
             // Create movie in db logic
             Movie movie = new Movie();
+            if (value.MovieId == 0)
+            {
+                movie.Title = value.Title;
+                movie.Genre = value.Genre;
+                movie.Director = value.Director;
+                _context.Movies.Add(movie);
+                _context.SaveChanges();
+            }
             return Ok(movie);
         }
 
         // PUT api/movie
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Put([FromBody] Movie movie)
         {
-            // Update movie in db logic
-            if (movie.MovieId == 0)
-            {
-                _context.Movies.Add(movie);
-            }
-            else
+            try
             {
                 Movie movieInDB = _context.Movies.Single(m => m.MovieId == movie.MovieId);
                 movieInDB.Title = movie.Title;
                 movieInDB.Genre = movie.Genre;
                 movieInDB.Director = movie.Director;
+                _context.SaveChanges();
+                return Ok();
             }
-            _context.SaveChanges();
+            catch (Exception e)
+            {
+                return Ok();
+            }
+            // Update movie in db logic
             //return RedirectToAction("Index", "Players");
 
             return Ok();
