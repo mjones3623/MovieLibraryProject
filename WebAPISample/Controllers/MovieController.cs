@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPISample.Data;
 using WebAPISample.Models;
 
@@ -23,7 +24,10 @@ namespace WebAPISample.Controllers
         public IActionResult Get()
         {
             // Retrieve all movies from db logic
-            return Ok(new string[] { "movie1 string", "movie2 string" });
+            //return Ok(new string[] { "movie1 string", "movie2 string" });
+            var movies = _context.Movies.Include(m => m).ToList();
+
+            return Ok(movies);
         }
 
         // GET api/movie/5
@@ -32,7 +36,16 @@ namespace WebAPISample.Controllers
         {
             // Retrieve movie by id from db logic
             // return Ok(movie);
-            return Ok();
+            try
+            {
+                Movie movieFromDb = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+                return Ok(movieFromDb);
+            }
+            catch (Exception e)
+            {
+                return Ok();
+            }
+            
         }
 
         // POST api/movie
@@ -40,7 +53,8 @@ namespace WebAPISample.Controllers
         public IActionResult Post([FromBody]Movie value)
         {
             // Create movie in db logic
-            return Ok();
+            Movie movie = new Movie();
+            return Ok(movie);
         }
 
         // PUT api/movie
@@ -48,6 +62,20 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
+            if (movie.MovieId == 0)
+            {
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                Movie movieInDB = _context.Movies.Single(m => m.MovieId == movie.MovieId);
+                movieInDB.Title = movie.Title;
+                movieInDB.Genre = movie.Genre;
+                movieInDB.Director = movie.Director;
+            }
+            _context.SaveChanges();
+            //return RedirectToAction("Index", "Players");
+
             return Ok();
         }
 
