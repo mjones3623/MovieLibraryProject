@@ -25,9 +25,10 @@ namespace WebAPISample.Controllers
         {
             // Retrieve all movies from db logic
             //return Ok(new string[] { "movie1 string", "movie2 string" });
-            var movies = _context.Movies.Include(m => m).ToList();
+            //var movies = _context.Movies.Include(m => m).ToList();
+            return Ok(_context.Movies);
 
-            return Ok(movies);
+            //return Ok(movies);
         }
 
         // GET api/movie/5
