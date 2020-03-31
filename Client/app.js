@@ -1,6 +1,15 @@
 
 
-
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("movietable").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "https://localhost:44325/api/movie/", true);
+  xhttp.send();
+}
 
 $(function(){
     $.get("https://localhost:44325/api/movie/", function(data){
@@ -12,6 +21,9 @@ $(function(){
     		parseData += '<td>' +value.title+ '</td>';
     		parseData += '<td>' +value.genre+ '</td>';
     		parseData += '<td>' +value.director+ '</td>';
+    		parseData += '<td><button type="edit" onclick="loadDoc()">Edit</button></td>';
+    		parseData += '<td><button type="delete" onclick="loadDoc()">Delete</button></td>';
+
     		parseData += '</tr>';
     	})
     	$("#movietable").append(parseData);
