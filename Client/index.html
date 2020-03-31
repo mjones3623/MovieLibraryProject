@@ -15,13 +15,19 @@
         <th>Title</th>
         <th>Genre</th>
         <th>Director</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
      </tr>                         
     <tr>
        <td class="movietitle"></td>
        <td class="moviegenre"></td>
        <td class="moviedirector"></td>
+       <td class="movieedit"></td>
+       <td class="moviedelete"></td>
     </tr>
  </table>
+
 <form id="my-form" action="index.html">
     <input type="text" name="title" placeholder="Title" />
     <input type="text" name="genre" placeholder="Genre" />
@@ -29,7 +35,9 @@
 
     <button type="submit">Submit</button>
 </form>
-
+<div id="other">
+  Trigger the handler
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
 </body>

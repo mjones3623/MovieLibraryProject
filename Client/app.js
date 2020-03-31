@@ -19,6 +19,22 @@ $(function(){
     })
 });
 
+$(function(){
+	var id = 3;
+    $.get("https://localhost:44325/api/movie/"+id, function(data){
+    	
+    	var parseData = '';
+    	var parseData = JSON.stringify(data);
+    	
+    	
+        console.log(parseData);
+    })
+});
+
+
+
+
+
 // $(document).ready(function(){
 //     $.getJSON("https://localhost:44325/api/movie/", function(data){
 //         var movie_data = '';
@@ -46,31 +62,75 @@ $(function(){
 //     });
 // });
 
+(function($){
+    function processForm( e ){
+        var dict = {
+            Title : this["title"].value,
+            Genre : this["genre"].value,
+        	Director: this["director"].value
+        };
+
+        $.ajax({
+            url: 'https://localhost:44325/api/movie/Post',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                $('#response pre').html( data );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+    }
+
+    $('#my-form').submit( processForm );
+})(jQuery);
+
 // (function($){
 //     function processForm( e ){
 //         var dict = {
 //             Title : this["title"].value,
 //             Genre : this["genre"].value,
 //         	Director: this["director"].value
-//         };
 
-//         $.ajax({
-//             url: 'https://localhost:44325/api/movie/Post',
-//             dataType: 'json',
-//             type: 'post',
-//             contentType: 'application/json',
-//             data: JSON.stringify(dict),
-//             success: function( data, textStatus, jQxhr ){
-//                 $('#response pre').html( data );
-//             },
-//             error: function( jqXhr, textStatus, errorThrown ){
-//                 console.log( errorThrown );
-//             }
-//         });
+
+//         };
+//         $.post("https://localhost:44325/api/movie/Post", function(dict){
+    	
+//     	var parseData = '';
+//     	var parseData = JSON.stringify(data);
+    	
+    	
+//         console.log(parseData);
+//     })
+        // $.ajax({
+        //     url: 'https://localhost:44325/api/movie/Post',
+        //     dataType: 'json',
+        //     type: 'post',
+        //     contentType: 'application/json',
+        //     data: JSON.stringify(dict),
+        //     success: function( data, textStatus, jQxhr ){
+        //         $('#response pre').html( data );
+        //     },
+        //     error: function( jqXhr, textStatus, errorThrown ){
+        //         console.log( errorThrown );
+        //     }
+        // });
 
 //         e.preventDefault();
 //     }
 
-//     $('#my-form').submit( processForm );
+//     // $('#my-form').submit( processForm );
+//     $( "#my-form" ).submit(function( processForm() ) {
+//   	alert( "Handler for .submit() called." );
+//   	event.preventDefault();
+// });
+//     $( "#other" ).click(function() {
+//   	$( "#my-form" ).submit();
+// });
 // })(jQuery);
 
