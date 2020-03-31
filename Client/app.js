@@ -1,5 +1,20 @@
+
+
+
+
 $(function(){
     $.get("https://localhost:44325/api/movie/", function(data){
+    	
+    	var parseData = JSON.stringify(data);
+    	var parseData = '';
+    	$.each(data, function(key,value){
+    		parseData += '<tr>';
+    		parseData += '<td>' +value.title+ '</td>';
+    		parseData += '<td>' +value.genre+ '</td>';
+    		parseData += '<td>' +value.director+ '</td>';
+    		parseData += '</tr>';
+    	})
+    	$("#movietable").append(parseData);
         console.log(data);
     })
 });
