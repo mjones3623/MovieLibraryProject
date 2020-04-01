@@ -1,30 +1,51 @@
+// $( document ).ready(function() {
+//     console.log( 'ready!' );
+//   });
+// function loadDoc() {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function() {
+//       if (this.readyState == 4 && this.status == 200) {
+//        document.getElementById("movietable").innerHTML = this.responseText;
+//       }
+//     };
+//     xhttp.open("GET", "https://localhost:44325/api/movie/", true);
+//     xhttp.send();
+//   }
 
-//(Get) Get movies for table 
-
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.getElementById("movietable").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "https://localhost:44325/api/movie/", true);
-  xhttp.send();
+function loadMovies(){
+    $.get("https://localhost:44325/api/movie/", function(data){
+    	$('#movietable').empty();
+    	var parseData = JSON.stringify(data);
+    	var parseData = '';
+    	$.each(data, function(key,value){
+            parseData += '<tbody>';
+    		parseData += '<tr>';
+    		parseData += '<th scope = "row">' +value.title+ '</td>';
+    		parseData += '<td>' +value.genre+ '</td>';
+    		parseData += '<td>' +value.director+ '</td>';
+    		parseData += '<td><button type="edit" onclick="loadDoc()">Edit</button></td>';
+            parseData += '</tr>';
+            parseData += '</tbody>';
+    	})
+    	$("#movietable").append(parseData);
+        console.log(data);
+    })
 }
-
+//(Get) Get movies for table 
 $(function(){
     $.get("https://localhost:44325/api/movie/", function(data){
     	
     	var parseData = JSON.stringify(data);
     	var parseData = '';
     	$.each(data, function(key,value){
+            parseData += '<tbody>';
     		parseData += '<tr>';
     		parseData += '<th scope = "row">' +value.title+ '</td>';
     		parseData += '<td>' +value.genre+ '</td>';
     		parseData += '<td>' +value.director+ '</td>';
     		parseData += '<td><button type="edit" onclick="loadDoc()">Edit</button></td>';
-
-    		parseData += '</tr>';
+            parseData += '</tr>';
+            parseData += '</tbody>';
     	})
     	$("#movietable").append(parseData);
         console.log(data);
@@ -62,8 +83,10 @@ $(function(){
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify(dict),
-            success: function( data, textStatus, jQxhr ){
-                $('#response pre').html( data );
+            success: function( data, textStatus, jQxhr , loadDoc){
+               // $('#response pre').html( data );
+               // loadDoc();
+               loadMovies();
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
@@ -78,30 +101,30 @@ $(function(){
 
 //(Delete)  Delete movie from database
 
-(function($){
-    function processForm( e ){
-    	var id = 3;
+// (function($){
+//     function processForm( e ){
+//     	var id = 3;
         
 
-        $.ajax({
-            url: 'https://localhost:44325/api/movie/Post',
-            dataType: 'json',
-            type: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify(dict),
-            success: function( data, textStatus, jQxhr ){
-                $('#response pre').html( data );
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
+//         $.ajax({
+//             url: 'https://localhost:44325/api/movie/Post',
+//             dataType: 'json',
+//             type: 'post',
+//             contentType: 'application/json',
+//             data: JSON.stringify(dict),
+//             success: function( data, textStatus, jQxhr ){
+//                 $('#response pre').html( data );
+//             },
+//             error: function( jqXhr, textStatus, errorThrown ){
+//                 console.log( errorThrown );
+//             }
+//         });
 
-        e.preventDefault();
-    }
+//         e.preventDefault();
+//     }
 
-    $('#my-form').submit( processForm );
-})(jQuery);
+//     $('#my-form').submit( processForm );
+// })(jQuery);
 
 
 // $(document).ready(function(){
