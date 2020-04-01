@@ -8,51 +8,36 @@
     <meta charset="utf-8">
 </head>
 <body>
+<div class = container-fluid>
+    <div class = "row">
+        <div class = "col-md-12">
+            <div id="response">
+                <h1 align="center">Welcome to the Movie Database!</h1>
+            </div>
+            <p id="movieinfo"></p>
+            <table class = "table-hover table-dark id" Id = "movietable" width="600" align="center">
+                <tr>
+                    <th scope = "col"><h5>Title</h5></th>
+                    <th scope = "col"><h5>Genre</h5></th>
+                    <th scope = "col"><h5>Director</h5></th>
+                    <th scope = "col"><h5>Edit</h5></th>
+                </tr>                         
+            </table>
+            <div id="other" align="center">
+                <h3>Add a movie to the database here.</h3>
+                <form id="my-form" action="index.html">
+                    <input type="text" name="title" placeholder="Title" />
+                    <input type="text" name="genre" placeholder="Genre" />
+                    <input type="text" name="director" placeholder="Director" />
 
-<div class = table id="response">
-    <pre></pre>
+                    <button type="submit" onclick="loadDoc()">Submit</button>
+                </form>
+                <img src="../images/movie1.jpg" alt="Movie Popcorn">
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script type="text/javascript" src="./app.js"></script>
+        </div>
+    </div>
 </div>
-<p id="movieinfo"></p>
-<table class = "table-hover table-dark id" Id = "movietable">
-    <tr>
-        <th scope = "col">Title</th>
-        <th scope = "col">Genre</th>
-        <th scope = "col">Director</th>
-        <th scope = "col">Edit</th>
-        <th scope = "col">Delete</th>
-
-     </tr>                         
-    <tr>
-       <th scope = "row" class="movietitle"></td>
-       <td class="moviegenre"></td>
-       <td class="moviedirector"></td>
-       <td class="movieedit"></td>
-       <td class="moviedelete"></td>
-    </tr>
- </table>
-
- <h3>Add a movie to the database here.</h3>
-
-<form id="my-form" action="index.html">
-    <input type="text" name="title" placeholder="Title" />
-    <input type="text" name="genre" placeholder="Genre" />
-    <input type="text" name="director" placeholder="Director" />
-
-    <button type="submit" onclick="loadDoc()">Submit</button>
-</form>
-<div id="other">
-  Trigger the handler
-</div>
-
-<h3>Remove a move from the database here.  Enter movieId from the table above</h3>
-
-<form id="my-form-2" action="index.html">
-    <input type="text" name="movieId" placeholder="Movie Id" />
-    
-    <button type="submit" onclick="loadDoc()">Submit</button>
-</form>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="./app.js"></script>
 </body>
 </html>

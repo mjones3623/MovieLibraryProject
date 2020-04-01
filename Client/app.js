@@ -19,11 +19,10 @@ $(function(){
     	var parseData = '';
     	$.each(data, function(key,value){
     		parseData += '<tr>';
-    		parseData += '<td>' +value.title+ '</td>';
+    		parseData += '<th scope = "row">' +value.title+ '</td>';
     		parseData += '<td>' +value.genre+ '</td>';
     		parseData += '<td>' +value.director+ '</td>';
     		parseData += '<td><button type="edit" onclick="loadDoc()">Edit</button></td>';
-    		parseData += '<td><button type="delete" onclick="loadDoc()">Delete</button></td>';
 
     		parseData += '</tr>';
     	})
