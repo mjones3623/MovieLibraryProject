@@ -1,4 +1,5 @@
 
+//(Get) Get movies for table 
 
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
@@ -31,6 +32,9 @@ $(function(){
     })
 });
 
+
+//(Get) Get single movie  
+
 $(function(){
 	var id = 3;
     $.get("https://localhost:44325/api/movie/"+id, function(data){
@@ -43,8 +47,62 @@ $(function(){
     })
 });
 
+//(Post) Create movie & add to database  
 
+(function($){
+    function processForm( e ){
+        var dict = {
+            Title : this["title"].value,
+            Genre : this["genre"].value,
+        	Director: this["director"].value
+        };
 
+        $.ajax({
+            url: 'https://localhost:44325/api/movie/Post',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                $('#response pre').html( data );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+    }
+
+    $('#my-form').submit( processForm );
+})(jQuery);
+
+//(Delete)  Delete movie from database
+
+(function($){
+    function processForm( e ){
+    	var id = 3;
+        
+
+        $.ajax({
+            url: 'https://localhost:44325/api/movie/Post',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                $('#response pre').html( data );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+    }
+
+    $('#my-form').submit( processForm );
+})(jQuery);
 
 
 // $(document).ready(function(){
@@ -74,33 +132,7 @@ $(function(){
 //     });
 // });
 
-(function($){
-    function processForm( e ){
-        var dict = {
-            Title : this["title"].value,
-            Genre : this["genre"].value,
-        	Director: this["director"].value
-        };
 
-        $.ajax({
-            url: 'https://localhost:44325/api/movie/Post',
-            dataType: 'json',
-            type: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify(dict),
-            success: function( data, textStatus, jQxhr ){
-                $('#response pre').html( data );
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
-
-        e.preventDefault();
-    }
-
-    $('#my-form').submit( processForm );
-})(jQuery);
 
 // (function($){
 //     function processForm( e ){

@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>jQuery AJAX POST Form</title>
     <meta charset="utf-8">
 </head>
 <body>
 
-<div id="response">
+<div class = table id="response">
     <pre></pre>
 </div>
 <p id="movieinfo"></p>
-<table id = "movietable">
+<table class = "table-hover table-dark id" Id = "movietable">
     <tr>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Director</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th scope = "col">Title</th>
+        <th scope = "col">Genre</th>
+        <th scope = "col">Director</th>
+        <th scope = "col">Edit</th>
+        <th scope = "col">Delete</th>
 
      </tr>                         
     <tr>
-       <td class="movietitle"></td>
+       <th scope = "row" class="movietitle"></td>
        <td class="moviegenre"></td>
        <td class="moviedirector"></td>
        <td class="movieedit"></td>
        <td class="moviedelete"></td>
     </tr>
  </table>
+
+ <h3>Add a movie to the database here.</h3>
 
 <form id="my-form" action="index.html">
     <input type="text" name="title" placeholder="Title" />
@@ -38,6 +43,15 @@
 <div id="other">
   Trigger the handler
 </div>
+
+<h3>Remove a move from the database here.  Enter movieId from the table above</h3>
+
+<form id="my-form-2" action="index.html">
+    <input type="text" name="movieId" placeholder="Movie Id" />
+    
+    <button type="submit" onclick="loadDoc()">Submit</button>
+</form>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
 </body>
