@@ -23,7 +23,7 @@ function loadMovies(){
     		parseData += '<th scope = "row">' +value.title+ '</td>';
     		parseData += '<td>' +value.genre+ '</td>';
     		parseData += '<td>' +value.director+ '</td>';
-    		parseData += '<td><button type="edit" onclick="loadDoc()">Edit</button></td>';
+    		parseData += '<td><button type="edit">Edit</button></td>';
             parseData += '</tr>';
             parseData += '</tbody>';
     	})
@@ -70,7 +70,7 @@ $(function(){
 //(Post) Create movie & add to database  
 
 (function($){
-    function processForm( e ){
+    function addMovie( e ){
         var dict = {
             Title : this["title"].value,
             Genre : this["genre"].value,
@@ -96,7 +96,7 @@ $(function(){
         e.preventDefault();
     }
 
-    $('#my-form').submit( processForm );
+    $('#add-movie').submit( addMovie );
 })(jQuery);
 
 //(Delete)  Delete movie from database
