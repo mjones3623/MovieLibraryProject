@@ -36,12 +36,12 @@
             <div id="editmovieplace" align="center">
                 <h3>Select a movie, and then edit here.</h3>
                 <form id="edit-movie" action="index.html">
-                    <input type="hidden" id="movieId" name="movieId" value="3487">
-                    <input type="text" name="edittitle" placeholder="Title" />
-                    <input type="text" name="editgenre" placeholder="Genre" />
-                    <input type="text" name="editdirector" placeholder="Director" />
+                    <input type="hidden" id="editid" type="text" name="movieid">
+                    <input type="text" id="edittitle" name="title" placeholder="Title" />
+                    <input type="text" id="editgenre" name="genre" placeholder="Genre" />
+                    <input type="text" id="editdirector" name="director" placeholder="Director" />
 
-                    <button type="submit">Submit</button>
+                    <button type="submit" onclick="submitEdit()">Submit</button>
                 </form>
             </div>
             <p><img src="../images/movie1.jpg" alt="Movie Popcorn"></p>

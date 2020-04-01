@@ -78,6 +78,10 @@ $(function(){
 
 function editMovie(movieid, title, genre, director){
     console.log(`${movieid}, ${title}, ${genre},${director}`);
+    $("#editid").val(movieid);
+    $("#edittitle").val(title);
+    $("#editgenre").val(genre);
+    $("#editdirector").val(director);
     //console.log(passedvalue);
     //document.getElementById("edit-title").innerHTML = passedvalue;
 }
