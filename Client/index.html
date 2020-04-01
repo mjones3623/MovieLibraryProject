@@ -33,17 +33,18 @@
                     <button type="submit">Submit</button>
                 </form>
             </div>
-            <div id="other" align="center">
+            <div id="editmovieplace" align="center">
                 <h3>Select a movie, and then edit here.</h3>
                 <form id="edit-movie" action="index.html">
+                    <input type="hidden" id="movieId" name="movieId" value="3487">
                     <input type="text" name="edittitle" placeholder="Title" />
                     <input type="text" name="editgenre" placeholder="Genre" />
-                    <input type="text" name="eidtdirector" placeholder="Director" />
+                    <input type="text" name="editdirector" placeholder="Director" />
 
                     <button type="submit">Submit</button>
                 </form>
-                <img src="../images/movie1.jpg" alt="Movie Popcorn">
             </div>
+            <p><img src="../images/movie1.jpg" alt="Movie Popcorn"></p>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
             <script type="text/javascript" src="./app.js"></script>
         </div>

@@ -38,19 +38,50 @@ $(function(){
     	var parseData = JSON.stringify(data);
     	var parseData = '';
     	$.each(data, function(key,value){
-            parseData += '<tbody>';
-    		parseData += '<tr>';
-    		parseData += '<th scope = "row">' +value.title+ '</td>';
-    		parseData += '<td>' +value.genre+ '</td>';
-    		parseData += '<td>' +value.director+ '</td>';
-    		parseData += '<td><button type="edit">Edit</button></td>';
-            parseData += '</tr>';
-            parseData += '</tbody>';
+            parseData += `<tbody>`;
+    		parseData += `<tr>`;
+    		parseData += `<th scope = "row">${value.title}</td>`;
+    		parseData += `<td>${value.genre}</td>`;
+    		parseData += `<td>${value.director}</td>`;
+            parseData += `<td>`;
+            //parseData += <a href="#" onclick="testOnClickFunction('+value.movieid+');">Edit</a></td>
+            parseData += `<button type="button" onclick="editMovie('${value.movieid}', '${value.title}','${value.genre}','${value.director}')">Edit</button>`
+            parseData += `</td>`;
+            parseData += `</tr>`;
+            parseData += `</tbody>`;
     	})
-    	$("#movietable").append(parseData);
+        $("#movietable").append(parseData);
+        //document.getElementById("edit-title").innerHTML = value.movieId;
         console.log(data);
     })
 });
+
+
+// $(function getMovieInfoToEdit(id){
+// 	//var id = 3;
+//     $.get("https://localhost:44325/api/movie/"+id, function(data){
+//     	var parseData = '';
+//     	var parseData = JSON.stringify(data);
+//         $.each(data, function(key,value){
+//             parseData += '<form id = "editmovie">';
+//     		parseData += '<input type ="text" name="edittitle" value="' +value.title+ '">';
+//     		parseData += '<input type ="text" name="edittitle" value="' +value.genre+ '">';
+//     		parseData += '<input type ="text" name="edittitle" value="' +value.director+ '">';
+//     		parseData += `<button type="button" onclick="editMovie('${value.movieid}', '${value.title}','${value.genre}','${value.director}')">Edit</button>`;
+//             parseData += '</form>';
+//     	})
+//         $("#editmovieplace").append(parseData);
+    	
+//         console.log(parseData);
+//     })
+// });
+
+function editMovie(movieid, title, genre, director){
+    console.log(`${movieid}, ${title}, ${genre},${director}`);
+    //console.log(passedvalue);
+    //document.getElementById("edit-title").innerHTML = passedvalue;
+}
+
 
 
 //(Get) Get single movie  
