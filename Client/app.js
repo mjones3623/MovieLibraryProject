@@ -43,7 +43,7 @@ $(function(){
     		parseData += '<th scope = "row">' +value.title+ '</td>';
     		parseData += '<td>' +value.genre+ '</td>';
     		parseData += '<td>' +value.director+ '</td>';
-    		parseData += '<td><button type="edit" onclick="loadDoc()">Edit</button></td>';
+    		parseData += '<td><button type="edit">Edit</button></td>';
             parseData += '</tr>';
             parseData += '</tbody>';
     	})
