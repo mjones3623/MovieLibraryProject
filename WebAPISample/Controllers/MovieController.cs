@@ -89,13 +89,34 @@ namespace WebAPISample.Controllers
             return Ok();
         }
 
+        // This was the attempted controller that Brett tried to fix.
+        // PUT api/movie
+        //[HttpPut]
+        //public IActionResult Put(int id, [FromBody] Movie movie)
+        //{
+        //    try
+        //    {
+        //        Movie movieInDB = _context.Movies.Single(m => m.MovieId == movie.MovieId);
+        //        movieInDB.Title = movie.Title;
+        //        movieInDB.Director = movie.Director;
+        //        movieInDB.Genre = movie.Genre;
+        //        _context.SaveChanges();
+        //        return Ok();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return Ok();
+        //    }
+        //    // Update movie in db logic
+        //    //return RedirectToAction("Index", "Players");
+
+        //    //return Ok();
+        //}
+
         // DELETE api/movie/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var movie = _context.Movies.Where(i => i.MovieId == id).FirstOrDefault();
-            _context.Movies.Remove(movie);
-            _context.SaveChanges();
             // Delete movie from db logic
             return Ok();
         }

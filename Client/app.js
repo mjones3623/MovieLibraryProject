@@ -86,10 +86,45 @@ function editMovie(movieid, title, genre, director){
     //document.getElementById("edit-title").innerHTML = passedvalue;
 }
 
+(function($){
+    function submitEdit() {
+        var integer = parseInt($("#editid").val(), 10);
+        var id = integer;
+        let title = $("#edittitle").val();
+        let director = $("#editdirector").val();
+        let genre = $("#editgenre").val();
 
+        var tempMovie = {
+            MovieId : id,
+            Title : title,
+            Director: director,
+            Genre : genre
+        };
+        console.log(tempMovie);
+        $.ajax({ 
+            url: 'https://localhost:44325/api/movie/' + id,
+            //dataType: 'json',
+            type: 'put',
+            contentType: 'application/json',
+            // data: JSON.stringify(tempMovie),
+            data: tempMovie,
+            success: function( data, textStatus, jQxhr){
+            // $('#response pre').html( data );
+            // loadDoc();
+            loadMovies();
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+        console.log(tempMovie);
+    }
+    $('.editmovieplace').submit( submitEdit );
+})(jQuery);
 
 //(Get) Get single movie  
-
 $(function(){
 	var id = 3;
     $.get("https://localhost:44325/api/movie/"+id, function(data){
