@@ -45,7 +45,7 @@ $(function(){
     		parseData += `<td>${value.director}</td>`;
             parseData += `<td>`;
             //parseData += <a href="#" onclick="testOnClickFunction('+value.movieid+');">Edit</a></td>
-            parseData += `<button type="button" onclick="editMovie('${value.movieid}', '${value.title}','${value.genre}','${value.director}')">Edit</button>`
+            parseData += `<button type="button" onclick="editMovie('${value.movieId}', '${value.title}','${value.genre}','${value.director}')">Edit</button>`
             parseData += `</td>`;
             parseData += `</tr>`;
             parseData += `</tbody>`;
