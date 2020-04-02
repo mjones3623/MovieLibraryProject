@@ -35,14 +35,14 @@
             </div>
             <div align="center">
                 <h3>Select a movie, and then edit here.</h3>
-                <form id="edit-movie" class= "editmovieplace" action="index.html">
+                <div id="edit-movie" class= "editmovieplace" action="index.html">
                     <input type="hidden" id="editid" type="text" name="movieid">
                     <input type="text" id="edittitle" name="title" placeholder="Title" />
                     <input type="text" id="editgenre" name="genre" placeholder="Genre" />
                     <input type="text" id="editdirector" name="director" placeholder="Director" />
 
-                    <button type="submit" >Submit</button>
-                </form>
+                    <input type="button" onclick="submitEdit()">Submit</input>
+                </div>
             </div>
             <p><img src="../images/movie1.jpg" alt="Movie Popcorn"></p>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

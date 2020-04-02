@@ -86,8 +86,9 @@ function editMovie(movieid, title, genre, director){
     //document.getElementById("edit-title").innerHTML = passedvalue;
 }
 
-(function($){
+
     function submitEdit() {
+        //e.preventDefault();
         var integer = parseInt($("#editid").val(), 10);
         var id = integer;
         let title = $("#edittitle").val();
@@ -95,19 +96,20 @@ function editMovie(movieid, title, genre, director){
         let genre = $("#editgenre").val();
 
         var tempMovie = {
-            MovieId : id,
-            Title : title,
-            Director: director,
-            Genre : genre
+            movieId : id,
+            title : title,
+            director: director,
+            genre : genre
         };
         console.log(tempMovie);
         $.ajax({ 
-            url: 'https://localhost:44325/api/movie/' + id,
+            url: 'https://localhost:44325/api/movie/put',
             //dataType: 'json',
+            dataType: 'text',
             type: 'put',
             contentType: 'application/json',
-            // data: JSON.stringify(tempMovie),
-            data: tempMovie,
+            data: JSON.stringify(tempMovie),
+            //data: tempMovie,
             success: function( data, textStatus, jQxhr){
             // $('#response pre').html( data );
             // loadDoc();
@@ -116,26 +118,24 @@ function editMovie(movieid, title, genre, director){
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
             }
-        });
-
-        e.preventDefault();
+         })
         console.log(tempMovie);
     }
-    $('.editmovieplace').submit( submitEdit );
-})(jQuery);
+    $('#editmovieplace').submit( submitEdit );
+
 
 //(Get) Get single movie  
-$(function(){
-	var id = 3;
-    $.get("https://localhost:44325/api/movie/"+id, function(data){
+// $(function(){
+// 	var id = 3;
+//     $.get("https://localhost:44325/api/movie/"+id, function(data){
     	
-    	var parseData = '';
-    	var parseData = JSON.stringify(data);
+//     	var parseData = '';
+//     	var parseData = JSON.stringify(data);
     	
     	
-        console.log(parseData);
-    })
-});
+//         console.log(parseData);
+//     })
+// });
 
 //(Post) Create movie & add to database  
 

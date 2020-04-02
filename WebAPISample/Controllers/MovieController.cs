@@ -74,8 +74,8 @@ namespace WebAPISample.Controllers
             {
                 Movie movieInDB = _context.Movies.Single(m => m.MovieId == movie.MovieId);
                 movieInDB.Title = movie.Title;
-                movieInDB.Genre = movie.Genre;
                 movieInDB.Director = movie.Director;
+                movieInDB.Genre = movie.Genre;
                 _context.SaveChanges();
                 return Ok();
             }
@@ -86,7 +86,7 @@ namespace WebAPISample.Controllers
             // Update movie in db logic
             //return RedirectToAction("Index", "Players");
 
-            return Ok();
+            //return Ok();
         }
 
         // This was the attempted controller that Brett tried to fix.
