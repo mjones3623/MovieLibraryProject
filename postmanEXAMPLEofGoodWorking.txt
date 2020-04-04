@@ -1,0 +1,15 @@
+{ 
+	"MovieId" : 0, 
+	"Title" : "The Godfather Part III", 
+	"Genre" : "Drama", 
+	"Director" : "Martin Scorsese" 
+	
+}
+
+https://localhost:44325/api/movie/Put
+
+https://localhost:44325/api/movie/Post
+
+https://localhost:44325/api/movie/5
+
+https://localhost:44325/api/movie/
